@@ -1,0 +1,50 @@
+Vagrant.configure("2") do |config|
+  config.hostmanager.enabled = true 
+  config.hostmanager.manage_host = true
+  
+### DB vm  ####
+  config.vm.define "mysql" do |mysql|
+    mysql.vm.box = "geerlingguy/centos7"
+    mysql.vm.hostname = "mysql"
+    mysql.vm.network "private_network", ip: "192.168.33.15"
+    mysql.vm.provision "shell", path: "mysql.sh"  
+
+  end
+  
+### Memcache vm  #### 
+  config.vm.define "memcache" do |memcache|
+    memcache.vm.box = "geerlingguy/centos7"
+    memcache.vm.hostname = "memcache"
+    memcache.vm.network "private_network", ip: "192.168.33.14"
+    memcache.vm.provision "shell", path: "memcache.sh"  
+  end
+  
+### RabbitMQ vm  ####
+  config.vm.define "rabbitmq" do |rabbitmq|
+    rabbitmq.vm.box = "geerlingguy/centos7"
+    rabbitmq.vm.hostname = "rabbitmq"
+    rabbitmq.vm.network "private_network", ip: "192.168.33.16"
+    rabbitmq.vm.provision "shell", path: "rabbitmq.sh"  
+  end
+  
+### tomcat vm ###
+   config.vm.define "tomcat" do |tomcat|
+    tomcat.vm.box = "geerlingguy/centos7"
+    tomcat.vm.hostname = "tomcat"
+    tomcat.vm.network "private_network", ip: "192.168.33.12"
+    tomcat.vm.provision "shell", path: "tomcat.sh"  
+    tomcat.vm.provider "virtualbox" do |vb|
+     vb.memory = "1024"
+   end
+   end
+   
+  
+### Nginx VM ###
+  config.vm.define "nginx" do |nginx|
+    nginx.vm.box = "ubuntu/xenial64"
+    nginx.vm.hostname = "web01"
+    nginx.vm.network "private_network", ip: "192.168.33.11"
+    nginx.vm.provision "shell", path: "nginx.sh"  
+end
+  
+end
