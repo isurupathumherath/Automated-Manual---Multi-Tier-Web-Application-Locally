@@ -8,6 +8,7 @@
   <li>IDE - VS Code</li>
 </ul>
 </br>
+
 ## Architecture of Project Services
 <ul>
   <li>NGINX</li>
@@ -17,9 +18,10 @@
   <li>MYSQL</li>
 </ul>
 </br>
-![image](https://user-images.githubusercontent.com/77333662/151670045-838f141f-3b7b-45ce-b8ce-bc727725e067.png)
 
+![image](https://user-images.githubusercontent.com/77333662/151670045-838f141f-3b7b-45ce-b8ce-bc727725e067.png)
 </br>
+
 ## Setup Flow
 <ol>
   <li>MySQL</li>
